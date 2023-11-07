@@ -58,6 +58,13 @@
 (global-set-key (kbd "C-S-s") 'isearch-forward-symbol-at-point)
 
 ;; External packages
+;;; xClip to cut/copy to clipboard
+(use-package xclip
+    :ensure t
+    :config
+    (xclip-mode 1)
+    )
+
 ;;; Editorconfig
 (use-package editorconfig
   :ensure t
