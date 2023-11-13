@@ -4,8 +4,8 @@
 (require 'package)
 ;;; Code:
 (add-to-list 'package-archives
-             '("melpa" . "https://melpa.org/packages/")
-             )
+    '("melpa" . "https://melpa.org/packages/")
+    )
 (package-initialize)
 (when (not package-archive-contents)
   (package-refresh-contents))
@@ -145,7 +145,7 @@
         ("C-x t C-t" . treemacs-find-file)
         ("C-x t M-t" . treemacs-find-tag)
         )
-  )
+    )
 
 (use-package cmake-mode)
 
@@ -535,7 +535,7 @@
  '(magit-diff-context ((t (:extend t :foreground "white"))))
  '(magit-diff-context-highlight ((t (:extend t :background "#3a3a3a" :foreground "white"))))
  '(magit-diff-file-heading ((t (:extend t :background "white" :foreground "black" :weight bold))))
- '(magit-diff-file-heading-highlight ((t (:inherit magit-diff-file-heading :extend t))))
+ '(magit-diff-file-heading-highlight ((t (:inherit magit-diff-file-heading :extend t :background "brightblack"))))
  '(magit-diff-hunk-region ((t (:inherit bold :extend t :background "black" :slant italic))))
  '(mode-line ((t (:background "color-178" :foreground "color-232" :box nil))))
  '(mode-line-inactive ((t (:background "color-94" :foreground "color-252" :box nil))))
