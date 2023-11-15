@@ -34,6 +34,12 @@
     (dired-mode . diff-hl-dired-mode)
     )
 
+(use-package openwith
+    :ensure t
+    :init
+    (setq openwith-associations '(("\\.pdf\\'" "zathura" (file))))
+    (openwith-mode))
+
 ;; Global Configuration
 (setq rst-pdf-program "zathura")
 (setq inhibit-splash-screen t)
