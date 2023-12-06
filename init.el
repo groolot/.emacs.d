@@ -37,7 +37,6 @@
 (use-package openwith
     :ensure t
     :init
-    (setq openwith-associations '(("\\.pdf\\'" "zathura" (file))))
     (openwith-mode))
 
 ;; Global Configuration
@@ -236,7 +235,12 @@
     )
 (global-set-key (kbd "C-c l e") 'lsp-treemacs-errors-list)
 
-;; (use-package lsp-java)
+(use-package systemd)
+(add-to-list 'auto-mode-alist '("\\.service\\'" . systemd-mode))
+(add-to-list 'auto-mode-alist '("\\.path\\'" . systemd-mode))
+(add-to-list 'auto-mode-alist '("\\.network\\'" . systemd-mode))
+(add-to-list 'auto-mode-alist '("\\.unit\\'" . systemd-mode))
+(add-to-list 'auto-mode-alist '("\\.timer\\'" . systemd-mode))
 
 (use-package which-key
     :config
@@ -281,10 +285,8 @@
   :config
   (flycheck-pos-tip-mode))
 
-(setq auto-mode-alist
-      (cons '("SConstruct" . python-mode) auto-mode-alist))
-(setq auto-mode-alist
-      (cons '("SConscript" . python-mode) auto-mode-alist))
+(add-to-list 'auto-mode-alist '("Sconstruct" . python-mode))
+(add-to-list 'auto-mode-alist '("Sconscript" . python-mode))
 
 ;; Available C style:
 ;; “gnu”: The default style for GNU projects
