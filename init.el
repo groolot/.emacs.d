@@ -175,65 +175,6 @@
 (add-hook 'magit-pre-refresh-hook 'diff-hl-magit-pre-refresh)
 (add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh)
 
-;; lsp
-(use-package lsp-mode
-    :ensure t
-    :hook (
-              (c-mode . lsp-deferred)
-              (c++-mode . lsp-deferred)
-              (python-mode . lsp-deferred)
-              (json-mode . lsp-deferred)
-              (lua-mode . lsp-deferred)
-              (java-mode . lsp-deferred)
-              (js-mode . lsp-deferred)
-              (js-jsx-mode . lsp-deferred)
-              (typescript-mode . lsp-deferred)
-              (web-mode . lsp-deferred)
-              (lsp-mode . lsp-enable-which-key-integration)
-              )
-    :commands lsp lsp-deferred
-    :config
-    (setq
-        gc-cons-threshold 100000000
-        lsp-clients-clangd-library-directories '("/usr" "/usr/include/c++/10" "/usr/include/c++/11" "/usr/include/c++/12" "/usr/include/c++/13")
-        lsp-enable-imenu nil
-        lsp-file-watch-threshold 15000
-        lsp-idle-delay 0.5
-        lsp-keymap-prefix "C-c l"
-        lsp-log-io nil
-        lsp-restart 'auto-restart
-        read-process-output-max (* 1024 1024)
-        )
-    (define-key lsp-mode-map (kbd "C-c l") lsp-command-map)
-    )
-
-(use-package lsp-ui
-  :ensure t
-  :commands (lsp-ui-mode)
-  :config
-  (setq lsp-ui-doc-enable t)
-  (setq lsp-ui-doc-delay 1)
-  (setq lsp-ui-doc-show-with-cursor t)
-  (setq lsp-ui-doc-show-with-mouse t)
-  (setq lsp-ui-sideline-enable nil)
-  ;; (setq lsp-ui-sideline-show-diagnostics t)
-  ;; (setq lsp-ui-sideline-show-hover t)
-  ;; (setq lsp-ui-sideline-show-code-actions t)
-  (define-key lsp-ui-mode-map [remap xref-find-definitions] #'lsp-ui-peek-find-definitions)
-  (define-key lsp-ui-mode-map [remap xref-find-references] #'lsp-ui-peek-find-references)
-  )
-
-(use-package lsp-ivy
-    :ensure t
-    :commands lsp-ivy-workspace-symbol
-    :config
-    (lsp-treemacs-sync-mode 1)
-    )
-
-(use-package lsp-treemacs
-    :ensure t
-    )
-(global-set-key (kbd "C-c l e") 'lsp-treemacs-errors-list)
 
 (use-package systemd)
 (add-to-list 'auto-mode-alist '("\\.service\\'" . systemd-mode))
@@ -267,23 +208,23 @@
   :after company
   :hook (company-mode . company-box-mode))
 
-;; flycheck
-(use-package flycheck
-  :ensure t
-  :init (global-flycheck-mode)
-  :config
-  (setq flycheck-display-errors-function
-	#'flycheck-display-error-messages-unless-error-list)
-
-  (setq flycheck-indication-mode nil))
-
-(use-package flycheck-pkg-config)
-
-(use-package flycheck-pos-tip
-  :ensure t
-  :after flycheck
-  :config
-  (flycheck-pos-tip-mode))
+;; ;; flycheck
+;; (use-package flycheck
+;;   :ensure t
+;;   :init (global-flycheck-mode)
+;;   :config
+;;   (setq flycheck-display-errors-function
+;; 	#'flycheck-display-error-messages-unless-error-list)
+;;
+;;   (setq flycheck-indication-mode nil))
+;;
+;; (use-package flycheck-pkg-config)
+;;
+;; (use-package flycheck-pos-tip
+;;   :ensure t
+;;   :after flycheck
+;;   :config
+;;   (flycheck-pos-tip-mode))
 
 (add-to-list 'auto-mode-alist '("Sconstruct" . python-mode))
 (add-to-list 'auto-mode-alist '("Sconscript" . python-mode))
@@ -351,10 +292,10 @@
 ;;  (setq plantuml-executable-path "/usr/bin/plantuml")
 ;;  (setq plantuml-executable-args "-headless -tsvg")
   )
-(use-package flycheck-plantuml
-  :config
-  (flycheck-plantuml-setup)
-  )
+;; (use-package flycheck-plantuml
+;;   :config
+;;   (flycheck-plantuml-setup)
+;;   )
 ;; Enable plantuml-mode for PlantUML files
 (add-to-list 'auto-mode-alist '("\\.plantuml\\'" . plantuml-mode))
 (add-to-list 'auto-mode-alist '("\\.puml\\'" . plantuml-mode))
@@ -392,19 +333,15 @@
  '(electric-pair-skip-whitespace-chars '(32 9 10))
  '(electric-pair-text-pairs '((34 . 34) (8216 . 8217) (8220 . 8221) (96 . 96)))
  '(ezimage-use-images nil)
- '(flycheck-checker-error-threshold 5000)
- '(flycheck-flake8rc "~/.flake8rc")
- '(flycheck-indication-mode 'left-fringe)
- '(flycheck-locate-config-file-functions
-      '(flycheck-locate-config-file-home flycheck-locate-config-file-ancestor-directories flycheck-locate-config-file-by-path))
+ ;; '(flycheck-checker-error-threshold 5000)
+ ;; '(flycheck-flake8rc "~/.flake8rc")
+ ;; '(flycheck-indication-mode 'left-fringe)
+ ;; '(flycheck-locate-config-file-functions
+ ;;      '(flycheck-locate-config-file-home flycheck-locate-config-file-ancestor-directories flycheck-locate-config-file-by-path))
  '(gdb-many-windows t)
  '(indent-tabs-mode nil)
  '(ispell-dictionary nil)
  '(js-indent-level 2)
- ;; '(lsp-clients-pylsp-library-directories '("/usr/"))
- ;; '(lsp-document-sync-method nil)
- ;; '(lsp-pyls-plugins-flake8-ignore '("E501"))
- ;; '(lsp-pylsp-plugins-flake8-ignore ["E501"])
  '(openwith-associations
       '(("\\.pdf\\'" "zathura"
             (file))
@@ -426,19 +363,17 @@
  '(split-height-threshold nil)
  '(split-width-threshold 160)
  '(treemacs-RET-actions-config
-      '((treemacs-lsp-treemacs-generic-root-open . treemacs-collapse-extension-node)
-           (treemacs-lsp-treemacs-generic-root-closed . treemacs-expand-extension-node)
-           (treemacs-lsp-treemacs-generic-node-open . lsp-treemacs-perform-ret-action)
-           (treemacs-lsp-treemacs-generic-node-closed . lsp-treemacs-perform-ret-action)
-           (root-node-open . treemacs-toggle-node)
-           (root-node-closed . treemacs-toggle-node)
-           (dir-node-open . treemacs-toggle-node)
-           (dir-node-closed . treemacs-toggle-node)
-           (file-node-open . treemacs-visit-node-default)
-           (file-node-closed . treemacs-visit-node-default)
-           (tag-node-open . treemacs-toggle-node-prefer-tag-visit)
-           (tag-node-closed . treemacs-toggle-node-prefer-tag-visit)
-           (tag-node . treemacs-visit-node-default)))
+   '(
+     (root-node-open . treemacs-toggle-node)
+     (root-node-closed . treemacs-toggle-node)
+     (dir-node-open . treemacs-toggle-node)
+     (dir-node-closed . treemacs-toggle-node)
+     (file-node-open . treemacs-visit-node-default)
+     (file-node-closed . treemacs-visit-node-default)
+     (tag-node-open . treemacs-toggle-node-prefer-tag-visit)
+     (tag-node-closed . treemacs-toggle-node-prefer-tag-visit)
+     (tag-node . treemacs-visit-node-default))
+   )
  '(treemacs-filewatch-mode t)
  '(warning-suppress-log-types '((comp) (use-package) (emacsql)))
  '(warning-suppress-types '((emacsql))))
@@ -456,12 +391,6 @@
   (set-process-query-on-exit-flag (get-process "devhelp") nil)
   )
 (global-set-key (kbd "<f7>") 'devhelp-word-at-point)
-
-;;; Smart-tabs
-(use-package smart-tabs-mode
-  :config
-  )
-(smart-tabs-insinuate 'c)
 
 ;;; Whitespace
 (global-set-key (kbd "RET") 'newline-and-indent)
@@ -522,11 +451,35 @@
 (global-set-key (kbd "M-<left>") 'decrement-number-at-point)
 (global-set-key (kbd "M-<right>") 'increment-number-at-point)
 
+(add-hook 'c-mode-hook #'(lambda () (define-key c-mode-map (kbd "C-d") 'duplicate-line-or-region)))
 (add-hook 'prog-mode-hook #'(lambda () (hs-minor-mode t)))
 (global-set-key (kbd "M-[ [") 'hs-show-block)
 (global-set-key (kbd "M-[ ]") 'hs-hide-block)
 (global-set-key (kbd "M-[ {") 'hs-show-all)
 (global-set-key (kbd "M-[ }") 'hs-hide-all)
+
+;;; Eglot configuration
+(use-package eglot
+  :hook (
+         (bash-mode . eglot-ensure)
+         (c++-mode . eglot-ensure)
+         (c-mode . eglot-ensure)
+         (java-mode . eglot-ensure)
+         (js-jsx-mode . eglot-ensure)
+         (js-mode . eglot-ensure)
+         (json-mode . eglot-ensure)
+         (python-mode . eglot-ensure)
+         (typescript-mode . eglot-ensure)
+         (web-mode . eglot-ensure)
+         )
+  :bind (
+         ("C-c e f" . eglot-format)
+         ("C-c e r" . eglot-rename)
+         ("C-c e s" . sort-lines)
+         ("C-c e e n" . flymake-goto-next-error)
+         ("C-c e e p" . flymake-goto-prev-error)
+         )
+  )
 
 (provide 'init)
 ;;; init.el ends here
