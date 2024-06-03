@@ -14,6 +14,8 @@
 (require 'use-package)
 (setq use-package-always-ensure t)
 
+(use-package ag)
+
 (use-package auto-package-update
     :ensure t
     :config
@@ -343,16 +345,18 @@
  '(ispell-dictionary nil)
  '(js-indent-level 2)
  '(openwith-associations
-      '(("\\.pdf\\'" "zathura"
-            (file))
-           ("\\.png\\'" "qimgv"
-               (file))
-           ("\\.\\(?:pdf|ps|dvi\\)\\'" "zathura"
-               (file))
-           ("\\.\\(?:mp3|mp4|mpe?g\\|avi\\|wmv\\)\\'" "mpv"
-               (file))
-           ("\\.\\(?:jpe?g\\|png|gif|tif|bmp|xbm|pbm|pgm|ppm|pnm\\)\\'" "qimgv"
-               (file))))
+   '(("\\.pdf\\'" "zathura"
+      (file))
+     ("\\.png\\'" "qimgv"
+      (file))
+     ("\\.\\(?:pdf|ps|dvi\\)\\'" "zathura"
+      (file))
+     ("\\.\\(?:mp3|mp4|mpe?g\\|avi\\|wmv\\)\\'" "mpv"
+      (file))
+     ("\\.\\(?:jpe?g\\|png|gif|tif|bmp|xbm|pbm|pgm|ppm|pnm\\)\\'" "qimgv"
+      (file))))
+ '(package-selected-packages
+   '(isearch-project ag forge crdt rust-mode systemd openwith xclip gruvbox-theme dockerfile-mode lsp-mode sqlite3 highlight-function-calls hl-block-mode magit-todos diff-hl emacsql-sqlite graphviz-dot-mode cmake-mode json-mode subed pdf-tools dap-mode django-commands company-auctex company-reftex company-shell company ac-c-headers ac-clang ac-rtags auto-complete auto-complete-c-headers sr-speedbar mermaid-mode aircon-theme iodine-theme twilight-theme one-themes twilight-bright-theme realgud realgud-ipdb realgud-lldb realgud-node-debug realgud-node-inspect editorconfig editorconfig-charset-extras editorconfig-custom-majormode editorconfig-domain-specific editorconfig-generate groovy-mode jenkinsfile-mode company-rtags disaster ecb flycheck-projectile flycheck-rtags helm helm-ag helm-flycheck helm-projectile helm-rtags projectile projectile-git-autofetch rtags srefactor smart-tabs-mode plantuml-mode magit auctex-lua company-lua flymake-lua lua-mode idle-highlight-mode use-package))
  '(plantuml-default-exec-mode 'jar)
  '(plantuml-executable-args '("-charset" "UTF-8" "-tsvg"))
  '(plantuml-indent-level 2)
@@ -360,6 +364,7 @@
  '(plantuml-java-args '("-Djava.awt.headless=true" "-jar"))
  '(python-shell-interpreter "ipython3")
  '(python-shell-interpreter-args "-i --simple-prompt")
+ '(rst-compile-toolsets '((html "rst2html" ".html" nil) (pdf "rst2pdf" ".pdf" nil)))
  '(split-height-threshold nil)
  '(split-width-threshold 160)
  '(treemacs-RET-actions-config
