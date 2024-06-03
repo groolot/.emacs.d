@@ -230,6 +230,10 @@
   :config
   (flycheck-pos-tip-mode))
 
+(use-package python-black
+    :hook
+    (python-mode . python-black-on-save-mode)
+    )
 
 (add-to-list 'auto-mode-alist '("Sconstruct" . python-mode))
 (add-to-list 'auto-mode-alist '("Sconscript" . python-mode))
