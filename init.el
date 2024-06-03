@@ -34,6 +34,8 @@
     (diff-hl-flydiff-mode)
     :hook
     (dired-mode . diff-hl-dired-mode)
+    (magit-pre-refresh-hook . diff-hl-magit-pre-refresh)
+    (magit-post-refresh-hook . diff-hl-magit-post-refresh)
     )
 
 (use-package openwith
