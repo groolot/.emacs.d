@@ -63,7 +63,7 @@
 (prefer-coding-system 'utf-8)
 (delete-selection-mode)
 ;;; Bindings
-(global-set-key (kbd "M-b") 'list-buffers)
+(global-set-key (kbd "M-b") 'ibuffer)
 
 ;; External packages
 ;;; xClip to cut/copy to clipboard
