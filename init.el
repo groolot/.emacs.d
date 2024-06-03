@@ -327,13 +327,13 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(TeX-view-program-selection
-      '(((output-dvi has-no-display-manager)
-            "dvi2tty")
-           ((output-dvi style-pstricks)
-               "dvips and gv")
-           (output-dvi "xdvi")
-           (output-pdf "Zathura")
-           (output-html "xdg-open")))
+   '(((output-dvi has-no-display-manager)
+      "dvi2tty")
+     ((output-dvi style-pstricks)
+      "dvips and gv")
+     (output-dvi "xdvi")
+     (output-pdf "Zathura")
+     (output-html "xdg-open")))
  '(comment-empty-lines 'eol)
  '(comment-multi-line t)
  '(custom-enabled-themes '(gruvbox-dark-hard))
@@ -495,7 +495,8 @@
 
 (provide 'init)
 ;;; init.el ends here
-(put 'magit-diff-edit-hunk-commit 'disabled nil)
+
+
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -513,4 +514,6 @@
  '(magit-diff-hunk-region ((t (:inherit bold :extend t :background "black" :slant italic))))
  '(mode-line ((t (:background "color-178" :foreground "color-232" :box nil))))
  '(mode-line-inactive ((t (:background "color-94" :foreground "color-252" :box nil))))
- '(region ((t (:extend t :background "color-234")))))
+ '(region ((t (:extend t :background "color-234"))))
+ )
+(put 'magit-diff-edit-hunk-commit 'disabled nil)
