@@ -212,23 +212,24 @@
   :after company
   :hook (company-mode . company-box-mode))
 
-;; ;; flycheck
-;; (use-package flycheck
-;;   :ensure t
-;;   :init (global-flycheck-mode)
-;;   :config
-;;   (setq flycheck-display-errors-function
-;; 	#'flycheck-display-error-messages-unless-error-list)
-;;
-;;   (setq flycheck-indication-mode nil))
-;;
-;; (use-package flycheck-pkg-config)
-;;
-;; (use-package flycheck-pos-tip
-;;   :ensure t
-;;   :after flycheck
-;;   :config
-;;   (flycheck-pos-tip-mode))
+;; flycheck
+(use-package flycheck
+  :ensure t
+  :init (global-flycheck-mode)
+  :config
+  (setq flycheck-display-errors-function
+	#'flycheck-display-error-messages-unless-error-list)
+
+  (setq flycheck-indication-mode nil))
+
+(use-package flycheck-pkg-config)
+
+(use-package flycheck-pos-tip
+  :ensure t
+  :after flycheck
+  :config
+  (flycheck-pos-tip-mode))
+
 
 (add-to-list 'auto-mode-alist '("Sconstruct" . python-mode))
 (add-to-list 'auto-mode-alist '("Sconscript" . python-mode))
@@ -296,10 +297,10 @@
 ;;  (setq plantuml-executable-path "/usr/bin/plantuml")
 ;;  (setq plantuml-executable-args "-headless -tsvg")
   )
-;; (use-package flycheck-plantuml
-;;   :config
-;;   (flycheck-plantuml-setup)
-;;   )
+(use-package flycheck-plantuml
+  :config
+  (flycheck-plantuml-setup)
+  )
 ;; Enable plantuml-mode for PlantUML files
 (add-to-list 'auto-mode-alist '("\\.plantuml\\'" . plantuml-mode))
 (add-to-list 'auto-mode-alist '("\\.puml\\'" . plantuml-mode))
@@ -337,11 +338,11 @@
  '(electric-pair-skip-whitespace-chars '(32 9 10))
  '(electric-pair-text-pairs '((34 . 34) (8216 . 8217) (8220 . 8221) (96 . 96)))
  '(ezimage-use-images nil)
- ;; '(flycheck-checker-error-threshold 5000)
- ;; '(flycheck-flake8rc "~/.flake8rc")
- ;; '(flycheck-indication-mode 'left-fringe)
- ;; '(flycheck-locate-config-file-functions
- ;;      '(flycheck-locate-config-file-home flycheck-locate-config-file-ancestor-directories flycheck-locate-config-file-by-path))
+ '(flycheck-checker-error-threshold 5000)
+ '(flycheck-flake8rc "~/.flake8rc")
+ '(flycheck-indication-mode 'left-fringe)
+ '(flycheck-locate-config-file-functions
+   '(flycheck-locate-config-file-home flycheck-locate-config-file-ancestor-directories flycheck-locate-config-file-by-path))
  '(gdb-many-windows t)
  '(indent-tabs-mode nil)
  '(ispell-dictionary nil)
