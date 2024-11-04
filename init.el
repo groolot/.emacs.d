@@ -16,14 +16,14 @@
 
 (use-package ag)
 
-(use-package auto-package-update
-    :ensure t
-    :config
-    (setq auto-package-update-delete-old-versions t
-        auto-package-update-interval 4
-        )
-    (auto-package-update-maybe)
-    )
+;; (use-package auto-package-update
+;;     :ensure t
+;;     :config
+;;     (setq auto-package-update-delete-old-versions t
+;;         auto-package-update-interval 4
+;;         )
+;;     (auto-package-update-maybe)
+;;     )
 
 (use-package gruvbox-theme)
 
@@ -332,13 +332,13 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(TeX-view-program-selection
-   '(((output-dvi has-no-display-manager)
-      "dvi2tty")
-     ((output-dvi style-pstricks)
-      "dvips and gv")
-     (output-dvi "xdvi")
-     (output-pdf "Zathura")
-     (output-html "xdg-open")))
+      '(((output-dvi has-no-display-manager)
+            "dvi2tty")
+           ((output-dvi style-pstricks)
+               "dvips and gv")
+           (output-dvi "xdvi")
+           (output-pdf "Zathura")
+           (output-html "xdg-open")))
  '(ag-context-lines 4)
  '(ag-highlight-search t)
  '(ag-reuse-buffers t)
@@ -354,22 +354,22 @@
  '(flycheck-flake8rc "~/.flake8rc")
  '(flycheck-indication-mode 'left-fringe)
  '(flycheck-locate-config-file-functions
-   '(flycheck-locate-config-file-home flycheck-locate-config-file-ancestor-directories flycheck-locate-config-file-by-path))
+      '(flycheck-locate-config-file-home flycheck-locate-config-file-ancestor-directories flycheck-locate-config-file-by-path))
  '(gdb-many-windows t)
  '(indent-tabs-mode nil)
  '(ispell-dictionary nil)
  '(js-indent-level 2)
  '(openwith-associations
-   '(("\\.pdf\\'" "zathura"
-      (file))
-     ("\\.png\\'" "qimgv"
-      (file))
-     ("\\.\\(?:pdf|ps|dvi\\)\\'" "zathura"
-      (file))
-     ("\\.\\(?:mp3|mp4|mpe?g\\|avi\\|wmv\\)\\'" "mpv"
-      (file))
-     ("\\.\\(?:jpe?g\\|png|gif|tif|bmp|xbm|pbm|pgm|ppm|pnm\\)\\'" "qimgv"
-      (file))))
+      '(("\\.pdf\\'" "zathura"
+            (file))
+           ("\\.png\\'" "qimgv"
+               (file))
+           ("\\.\\(?:pdf|ps|dvi\\)\\'" "zathura"
+               (file))
+           ("\\.\\(?:mp3|mp4|mpe?g\\|avi\\|wmv\\)\\'" "mpv"
+               (file))
+           ("\\.\\(?:jpe?g\\|png|gif|tif|bmp|xbm|pbm|pgm|ppm|pnm\\)\\'" "qimgv"
+               (file))))
  '(package-selected-packages
       '(python-isort isearch-project ag forge crdt rust-mode systemd openwith xclip gruvbox-theme dockerfile-mode lsp-mode sqlite3 highlight-function-calls hl-block-mode magit-todos diff-hl emacsql-sqlite graphviz-dot-mode cmake-mode subed pdf-tools dap-mode django-commands company-auctex company-reftex company-shell company ac-c-headers ac-clang ac-rtags auto-complete auto-complete-c-headers sr-speedbar mermaid-mode aircon-theme iodine-theme twilight-theme one-themes twilight-bright-theme realgud realgud-ipdb realgud-lldb realgud-node-debug realgud-node-inspect editorconfig editorconfig-charset-extras editorconfig-custom-majormode editorconfig-domain-specific editorconfig-generate groovy-mode jenkinsfile-mode company-rtags disaster ecb flycheck-projectile flycheck-rtags helm helm-ag helm-flycheck helm-projectile helm-rtags projectile projectile-git-autofetch rtags srefactor smart-tabs-mode plantuml-mode magit auctex-lua company-lua flymake-lua lua-mode idle-highlight-mode use-package))
  '(plantuml-default-exec-mode 'jar)
@@ -383,17 +383,15 @@
  '(split-height-threshold nil)
  '(split-width-threshold 160)
  '(treemacs-RET-actions-config
-   '(
-     (root-node-open . treemacs-toggle-node)
-     (root-node-closed . treemacs-toggle-node)
-     (dir-node-open . treemacs-toggle-node)
-     (dir-node-closed . treemacs-toggle-node)
-     (file-node-open . treemacs-visit-node-default)
-     (file-node-closed . treemacs-visit-node-default)
-     (tag-node-open . treemacs-toggle-node-prefer-tag-visit)
-     (tag-node-closed . treemacs-toggle-node-prefer-tag-visit)
-     (tag-node . treemacs-visit-node-default))
-   )
+      '((root-node-open . treemacs-toggle-node)
+           (root-node-closed . treemacs-toggle-node)
+           (dir-node-open . treemacs-toggle-node)
+           (dir-node-closed . treemacs-toggle-node)
+           (file-node-open . treemacs-visit-node-default)
+           (file-node-closed . treemacs-visit-node-default)
+           (tag-node-open . treemacs-toggle-node-prefer-tag-visit)
+           (tag-node-closed . treemacs-toggle-node-prefer-tag-visit)
+           (tag-node . treemacs-visit-node-default)))
  '(treemacs-filewatch-mode t)
  '(warning-suppress-log-types '((comp) (use-package) (emacsql)))
  '(warning-suppress-types '((emacsql))))
@@ -533,6 +531,5 @@
  '(magit-diff-hunk-region ((t (:inherit bold :extend t :background "black" :slant italic))))
  '(mode-line ((t (:background "color-178" :foreground "color-232" :box nil))))
  '(mode-line-inactive ((t (:background "color-94" :foreground "color-252" :box nil))))
- '(region ((t (:extend t :background "color-234"))))
- )
+ '(region ((t (:extend t :background "color-234")))))
 (put 'magit-diff-edit-hunk-commit 'disabled nil)
