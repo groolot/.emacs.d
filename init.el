@@ -235,6 +235,11 @@
     (python-mode . python-black-on-save-mode)
     )
 
+(use-package python-isort
+    :hook
+    (python-mode . python-isort-on-save-mode)
+    )
+
 (add-to-list 'auto-mode-alist '("Sconstruct" . python-mode))
 (add-to-list 'auto-mode-alist '("Sconscript" . python-mode))
 
@@ -334,6 +339,9 @@
      (output-dvi "xdvi")
      (output-pdf "Zathura")
      (output-html "xdg-open")))
+ '(ag-context-lines 4)
+ '(ag-highlight-search t)
+ '(ag-reuse-buffers t)
  '(comment-empty-lines 'eol)
  '(comment-multi-line t)
  '(custom-enabled-themes '(gruvbox-dark-hard))
@@ -363,7 +371,7 @@
      ("\\.\\(?:jpe?g\\|png|gif|tif|bmp|xbm|pbm|pgm|ppm|pnm\\)\\'" "qimgv"
       (file))))
  '(package-selected-packages
-   '(isearch-project ag forge crdt rust-mode systemd openwith xclip gruvbox-theme dockerfile-mode lsp-mode sqlite3 highlight-function-calls hl-block-mode magit-todos diff-hl emacsql-sqlite graphviz-dot-mode cmake-mode json-mode subed pdf-tools dap-mode django-commands company-auctex company-reftex company-shell company ac-c-headers ac-clang ac-rtags auto-complete auto-complete-c-headers sr-speedbar mermaid-mode aircon-theme iodine-theme twilight-theme one-themes twilight-bright-theme realgud realgud-ipdb realgud-lldb realgud-node-debug realgud-node-inspect editorconfig editorconfig-charset-extras editorconfig-custom-majormode editorconfig-domain-specific editorconfig-generate groovy-mode jenkinsfile-mode company-rtags disaster ecb flycheck-projectile flycheck-rtags helm helm-ag helm-flycheck helm-projectile helm-rtags projectile projectile-git-autofetch rtags srefactor smart-tabs-mode plantuml-mode magit auctex-lua company-lua flymake-lua lua-mode idle-highlight-mode use-package))
+      '(python-isort isearch-project ag forge crdt rust-mode systemd openwith xclip gruvbox-theme dockerfile-mode lsp-mode sqlite3 highlight-function-calls hl-block-mode magit-todos diff-hl emacsql-sqlite graphviz-dot-mode cmake-mode subed pdf-tools dap-mode django-commands company-auctex company-reftex company-shell company ac-c-headers ac-clang ac-rtags auto-complete auto-complete-c-headers sr-speedbar mermaid-mode aircon-theme iodine-theme twilight-theme one-themes twilight-bright-theme realgud realgud-ipdb realgud-lldb realgud-node-debug realgud-node-inspect editorconfig editorconfig-charset-extras editorconfig-custom-majormode editorconfig-domain-specific editorconfig-generate groovy-mode jenkinsfile-mode company-rtags disaster ecb flycheck-projectile flycheck-rtags helm helm-ag helm-flycheck helm-projectile helm-rtags projectile projectile-git-autofetch rtags srefactor smart-tabs-mode plantuml-mode magit auctex-lua company-lua flymake-lua lua-mode idle-highlight-mode use-package))
  '(plantuml-default-exec-mode 'jar)
  '(plantuml-executable-args '("-charset" "UTF-8" "-tsvg"))
  '(plantuml-indent-level 2)
@@ -470,16 +478,26 @@
 (global-set-key (kbd "M-[ {") 'hs-show-all)
 (global-set-key (kbd "M-[ }") 'hs-hide-all)
 
+(use-package lua-mode
+    :config
+    '(lua-indent-level 4))
+
 ;;; Eglot configuration
 (use-package eglot
   :hook (
          (bash-mode . eglot-ensure)
          (c++-mode . eglot-ensure)
          (c-mode . eglot-ensure)
+         (cmake-mode . eglot-ensure)
+         (css-mode . eglot-ensure)
+         (dockerfile-ts-mode . eglot-ensure)
+         (html-mode . eglot-ensure)
          (java-mode . eglot-ensure)
          (js-jsx-mode . eglot-ensure)
          (js-mode . eglot-ensure)
          (json-mode . eglot-ensure)
+         (lua-mode . eglot-ensure)
+         (markdown-mode . eglot-ensure)
          (python-mode . eglot-ensure)
          (typescript-mode . eglot-ensure)
          (web-mode . eglot-ensure)
@@ -503,6 +521,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(default ((t (:inherit nil :extend nil :stipple nil :background "color-232" :foreground "brightwhite" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 1 :width normal :foundry "default" :family "default"))))
+ '(eglot-highlight-symbol-face ((t (:inherit bold :background "color-94"))))
  '(line-number ((t (:background "color-235" :foreground "#767676"))))
  '(line-number-current-line ((t (:background "#4e4e4e" :foreground "#ff8700" :weight bold))))
  '(magit-diff-added ((t (:extend t :foreground "brightgreen"))))
