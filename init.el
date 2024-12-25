@@ -346,15 +346,20 @@
  '(comment-multi-line t)
  '(custom-enabled-themes '(gruvbox-dark-hard))
  '(custom-safe-themes t)
+ '(eglot-java-eglot-server-programs-manual-updates t)
+ '(eglot-java-server-install-dir "/usr/local/share/jdtls")
  '(electric-pair-pairs '((34 . 34) (8216 . 8217) (8220 . 8221) (96 . 96)))
  '(electric-pair-skip-whitespace-chars '(32 9 10))
  '(electric-pair-text-pairs '((34 . 34) (8216 . 8217) (8220 . 8221) (96 . 96)))
  '(ezimage-use-images nil)
  '(flycheck-checker-error-threshold 5000)
+ '(flycheck-checkers
+      '(ada-gnat asciidoctor asciidoc awk-gawk bazel-build-buildifier bazel-module-buildifier bazel-starlark-buildifier bazel-workspace-buildifier c/c++-clang c/c++-gcc c/c++-cppcheck cfengine coffee coffee-coffeelint css-csslint css-stylelint cuda-nvcc cwl d-dmd dockerfile-hadolint elixir-credo emacs-lisp emacs-lisp-checkdoc ember-template erlang-rebar3 erlang eruby-erubis eruby-ruumba fortran-gfortran go-gofmt go-vet go-build go-test go-errcheck go-unconvert go-staticcheck groovy haml haml-lint handlebars haskell-stack-ghc haskell-ghc haskell-hlint html-tidy javascript-eslint javascript-jshint javascript-standard json-jsonlint json-python-json json-jq jsonnet less less-stylelint llvm-llc lua-luacheck lua markdown-markdownlint-cli markdown-mdl markdown-pymarkdown nix nix-linter opam perl perl-perlcritic perl-perlimports php php-phpmd php-phpcs php-phpcs-changed processing proselint protobuf-protoc protobuf-prototool pug puppet-parser puppet-lint python-ruff python-pycompile python-pyright python-mypy r-lintr r racket rpm-rpmlint rst-sphinx rst ruby-rubocop ruby-chef-cookstyle ruby-standard ruby-reek ruby ruby-jruby rust-cargo rust rust-clippy salt-lint scala scala-scalastyle scheme-chicken scss-lint sass-stylelint scss-stylelint sass/scss-sass-lint sass scss sh-bash sh-posix-dash sh-posix-bash sh-zsh sh-shellcheck slim slim-lint sql-sqlint statix systemd-analyze tcl-nagelfar terraform terraform-tflint tex-chktex tex-lacheck texinfo textlint typescript-tslint verilog-verilator vhdl-ghdl xml-xmlstarlet xml-xmllint yaml-actionlint yaml-jsyaml yaml-ruby yaml-yamllint))
  '(flycheck-flake8rc "~/.flake8rc")
- '(flycheck-indication-mode 'left-fringe)
+ '(flycheck-indication-mode 'left-margin)
  '(flycheck-locate-config-file-functions
       '(flycheck-locate-config-file-home flycheck-locate-config-file-ancestor-directories flycheck-locate-config-file-by-path))
+ '(flycheck-python-ruff-executable "/usr/local/bin/ruff")
  '(gdb-many-windows t)
  '(indent-tabs-mode nil)
  '(ispell-dictionary nil)
@@ -371,7 +376,7 @@
            ("\\.\\(?:jpe?g\\|png|gif|tif|bmp|xbm|pbm|pgm|ppm|pnm\\)\\'" "qimgv"
                (file))))
  '(package-selected-packages
-      '(python-isort isearch-project ag forge crdt rust-mode systemd openwith xclip gruvbox-theme dockerfile-mode lsp-mode sqlite3 highlight-function-calls hl-block-mode magit-todos diff-hl emacsql-sqlite graphviz-dot-mode cmake-mode subed pdf-tools dap-mode django-commands company-auctex company-reftex company-shell company ac-c-headers ac-clang ac-rtags auto-complete auto-complete-c-headers sr-speedbar mermaid-mode aircon-theme iodine-theme twilight-theme one-themes twilight-bright-theme realgud realgud-ipdb realgud-lldb realgud-node-debug realgud-node-inspect editorconfig editorconfig-charset-extras editorconfig-custom-majormode editorconfig-domain-specific editorconfig-generate groovy-mode jenkinsfile-mode company-rtags disaster ecb flycheck-projectile flycheck-rtags helm helm-ag helm-flycheck helm-projectile helm-rtags projectile projectile-git-autofetch rtags srefactor smart-tabs-mode plantuml-mode magit auctex-lua company-lua flymake-lua lua-mode idle-highlight-mode use-package))
+      '(eglot-java jinja2-mode ini-mode json-reformat json-mode python-isort isearch-project ag forge crdt rust-mode systemd openwith xclip gruvbox-theme dockerfile-mode lsp-mode sqlite3 highlight-function-calls hl-block-mode magit-todos diff-hl emacsql-sqlite graphviz-dot-mode cmake-mode subed pdf-tools dap-mode django-commands company-auctex company-reftex company-shell company ac-c-headers ac-clang ac-rtags auto-complete auto-complete-c-headers sr-speedbar mermaid-mode aircon-theme iodine-theme twilight-theme one-themes twilight-bright-theme realgud realgud-ipdb realgud-lldb realgud-node-debug realgud-node-inspect editorconfig editorconfig-charset-extras editorconfig-custom-majormode editorconfig-domain-specific editorconfig-generate groovy-mode jenkinsfile-mode company-rtags disaster ecb flycheck-projectile flycheck-rtags helm helm-ag helm-flycheck helm-projectile helm-rtags projectile projectile-git-autofetch rtags srefactor smart-tabs-mode plantuml-mode magit auctex-lua company-lua flymake-lua lua-mode idle-highlight-mode use-package))
  '(plantuml-default-exec-mode 'jar)
  '(plantuml-executable-args '("-charset" "UTF-8" "-tsvg"))
  '(plantuml-indent-level 2)
@@ -476,6 +481,8 @@
 (global-set-key (kbd "M-[ {") 'hs-show-all)
 (global-set-key (kbd "M-[ }") 'hs-hide-all)
 
+(use-package json-mode)
+
 (use-package lua-mode
     :config
     '(lua-indent-level 4))
@@ -484,6 +491,7 @@
 (use-package eglot
   :hook (
          (bash-mode . eglot-ensure)
+         (bash-ts-mode . eglot-ensure)
          (c++-mode . eglot-ensure)
          (c-mode . eglot-ensure)
          (cmake-mode . eglot-ensure)
@@ -497,6 +505,7 @@
          (lua-mode . eglot-ensure)
          (markdown-mode . eglot-ensure)
          (python-mode . eglot-ensure)
+         (sh-mode . eglot-ensure)
          (typescript-mode . eglot-ensure)
          (web-mode . eglot-ensure)
          )
@@ -508,6 +517,7 @@
          ("C-c e e p" . flymake-goto-prev-error)
          )
   )
+(use-package eglot-java)
 
 (provide 'init)
 ;;; init.el ends here
